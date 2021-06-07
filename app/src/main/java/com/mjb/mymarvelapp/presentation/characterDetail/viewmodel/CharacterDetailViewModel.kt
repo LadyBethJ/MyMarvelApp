@@ -10,10 +10,7 @@ import com.mjb.mymarvelapp.infrastructure.utils.BadRequest
 import com.mjb.mymarvelapp.infrastructure.utils.Error
 import com.mjb.mymarvelapp.infrastructure.utils.ErrorNoConnection
 import com.mjb.mymarvelapp.infrastructure.utils.Success
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,7 +25,7 @@ class CharacterDetailViewModel @Inject constructor(
         viewModelScope.launch {
             getCharacterDetailUseCase(GetCharacterDetailUseCase.Params(characterId))
                 .onStart { handleShowSpinner(true) }
-                .onEach { handleShowSpinner(false) }
+                .onCompletion { handleShowSpinner(false) }
                 .catch { failure -> handleFailure(failure) }
                 .collect { result ->
                     when (result) {
