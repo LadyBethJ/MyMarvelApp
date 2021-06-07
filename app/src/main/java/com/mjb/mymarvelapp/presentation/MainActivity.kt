@@ -28,15 +28,7 @@ class MainActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.toolbar.title = when (destination.id) {
-                R.id.charactersList -> destination.label
-                else -> ""
-            }
-
-            binding.toolbar.visibility = when (destination.id) {
-                R.id.charactersList -> View.VISIBLE
-                else -> View.GONE
-            }
+            binding.toolbar.title = destination.label
         }
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
     }

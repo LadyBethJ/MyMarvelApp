@@ -2,7 +2,9 @@ package com.mjb.mymarvelapp.presentation.charactersList.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
+import androidx.navigation.navOptions
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,9 +19,21 @@ import com.mjb.mymarvelapp.presentation.charactersList.models.CharacterListView
 class CharactersListAdapter :
     ListAdapter<CharacterListView, CharactersListAdapter.CharactersViewHolder>(DIFF_CALLBACK) {
 
+    private lateinit var binding: ListItemCharacterBinding
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersViewHolder {
-        val binding =
+        binding =
             ListItemCharacterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        Companion.navOptions = navOptions {
+            anim {
+                enter = R.anim.slide_in_right
+                exit = R.anim.slide_out_left
+                popEnter = R.anim.slide_in_left
+                popExit = R.anim.slide_out_right
+            }
+        }
+
         return CharactersViewHolder(binding)
     }
 
@@ -46,13 +60,14 @@ class CharactersListAdapter :
                         add(SvgDecoder(itemBinding.root.context))
                     }.build()
                 )
+
+                val action = CharactersListFragmentDirections.actionListToCharacterDetail(
+                    character.id
+                )
+
                 root.setOnClickListener {
                     root.findNavController()
-                        .navigate(
-                            CharactersListFragmentDirections.actionListToCharacterDetail(
-                                character.id
-                            )
-                        )
+                        .navigate(action, Companion.navOptions)
                 }
             }
         }
@@ -72,5 +87,6 @@ class CharactersListAdapter :
                 newCharacter: CharacterListView
             ) = oldCharacter == newCharacter
         }
+        private lateinit var navOptions: NavOptions
     }
 }
