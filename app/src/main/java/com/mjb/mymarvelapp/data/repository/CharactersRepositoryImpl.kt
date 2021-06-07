@@ -8,10 +8,8 @@ import com.mjb.mymarvelapp.infrastructure.utils.BadRequest
 import com.mjb.mymarvelapp.infrastructure.utils.Error
 import com.mjb.mymarvelapp.infrastructure.utils.ErrorNoConnection
 import com.mjb.mymarvelapp.infrastructure.utils.Success
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class CharactersRepositoryImpl @Inject constructor(
@@ -35,7 +33,7 @@ class CharactersRepositoryImpl @Inject constructor(
     }.catch {
         it.printStackTrace()
         emit(Error(Throwable(ErrorHandler.UNKNOWN_ERROR)))
-    }.flowOn(Dispatchers.IO)
+    }
 
     override fun getCharacterDetail(id: Int) = flow {
         emit(
@@ -54,5 +52,5 @@ class CharactersRepositoryImpl @Inject constructor(
     }.catch {
         it.printStackTrace()
         emit(Error(Throwable(ErrorHandler.UNKNOWN_ERROR)))
-    }.flowOn(Dispatchers.IO)
+    }
 }
