@@ -12,6 +12,7 @@ import com.mjb.mymarvelapp.presentation.charactersList.models.CharacterListView
 import com.mjb.mymarvelapp.presentation.charactersList.viewmodel.CharactersListViewModel
 import com.mjb.mymarvelapp.infrastructure.exception.ErrorHandler
 import com.mjb.mymarvelapp.presentation.utils.extensions.failure
+import com.mjb.mymarvelapp.presentation.utils.extensions.infiniteScroll
 import com.mjb.mymarvelapp.presentation.utils.extensions.observe
 import javax.inject.Inject
 
@@ -49,6 +50,9 @@ class CharactersListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            recyclerView.infiniteScroll {
+                charactersListViewModel.charactersListScrolled()
+            }
             recyclerView.adapter = adapter
             if (adapter.itemCount == 0) {
                 charactersListViewModel.getCharactersList()

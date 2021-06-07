@@ -46,6 +46,24 @@ class CharactersListViewModel @Inject constructor(val getCharactersListUseCase: 
         }
     }
 
+    fun charactersListScrolled() {
+        lastPageCount += MAX_OFFSET
+        viewModelScope.launch {
+            getCharactersListUseCase(GetCharactersListUseCase.Params(lastPageCount))
+                .catch { failure -> handleFailure(failure) }
+                .collect { result ->
+                    when (result) {
+                        is Success<List<CharacterList>> -> handleSuccessGetMoreCharacters(
+                            result.data
+                        )
+                        is Error -> handleFailure(result.exception)
+                        is ErrorNoConnection -> handleFailure(result.exception)
+                        is BadRequest -> handleBadRequest(result.exception)
+                    }
+                }
+        }
+    }
+
     private fun handleSuccessGetCharactersList(data: List<CharacterList>) {
         charactersList = data.map { it.toCharacterView() }.toMutableList()
         charactersResponse.postValue(charactersList)
@@ -54,16 +72,5 @@ class CharactersListViewModel @Inject constructor(val getCharactersListUseCase: 
     private fun handleSuccessGetMoreCharacters(data: List<CharacterList>) {
         charactersList.addAll(data.map { it.toCharacterView() })
         moreCharactersResponse.postValue(charactersList)
-    }
-
-    fun filterCharactersList(text: String) {
-        val filteredList = charactersList.filter { character ->
-            containsText(character, text.toLowerCase(Locale.getDefault()))
-        }
-        charactersResponse.postValue(filteredList)
-    }
-
-    private fun containsText(character: CharacterListView, text: String): Boolean {
-        return character.name.toLowerCase(Locale.getDefault()).contains(text)
     }
 }
