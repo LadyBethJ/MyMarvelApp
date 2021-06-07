@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Marvel App</string>
+    <string name="character_id">#%1s</string>
+    <string name="no_description">No description available</string>
+    <string name="accept_btn">Accept</string>
+    <string name="bad_request">Bad request</string>
+    <string name="error_title">Error</string>
+    <string name="common_error">An error has occurred\nPlease try again</string>
+</resources>
