@@ -28,9 +28,9 @@ class NetworkModule {
             val original = chain.request()
             val originalHttpUrl = original.url
 
-            val apiKey = BuildConfig.MARVEL_API_PUBLIC_KEY
-            val hash = BuildConfig.MARVEL_API_HASH
-            val ts = BuildConfig.MARVEL_API_TS
+            val apiKey = BuildConfig.PUBLIC_KEY
+            val hash = BuildConfig.HASH
+            val ts = BuildConfig.TS
 
             val url = originalHttpUrl.newBuilder()
                 .addQueryParameter("ts", ts)
@@ -52,7 +52,7 @@ class NetworkModule {
         return Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create().withNullSerialization())
             .client(okHttpClient)
-            .baseUrl(BuildConfig.MARVEL_API_BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .build()
     }
 
