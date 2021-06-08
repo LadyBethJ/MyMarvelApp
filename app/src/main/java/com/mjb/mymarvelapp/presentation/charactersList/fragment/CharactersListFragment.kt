@@ -23,7 +23,8 @@ class CharactersListFragment : BaseFragment() {
 
     override fun initializeInjector(viewComponent: ViewComponent) = viewComponent.inject(this)
 
-    private lateinit var binding: FragmentCharactersListBinding
+    private var _binding: FragmentCharactersListBinding? = null
+    private val binding get() = _binding!!
     private val adapter = CharactersListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class CharactersListFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCharactersListBinding.inflate(inflater, container, false)
+        _binding = FragmentCharactersListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -58,6 +59,11 @@ class CharactersListFragment : BaseFragment() {
                 charactersListViewModel.getCharactersList()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setListOfCharacters(characters: List<CharacterListView>?) {

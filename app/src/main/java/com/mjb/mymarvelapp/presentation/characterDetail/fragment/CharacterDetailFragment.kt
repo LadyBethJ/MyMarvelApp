@@ -26,7 +26,8 @@ class CharacterDetailFragment : BaseFragment() {
     lateinit var characterDetailViewModel: CharacterDetailViewModel
     override fun initializeInjector(viewComponent: ViewComponent) = viewComponent.inject(this)
 
-    private lateinit var binding: FragmentCharacterDetailBinding
+    private var _binding: FragmentCharacterDetailBinding? = null
+    private val binding get() = _binding!!
     private val args: CharacterDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,13 +45,18 @@ class CharacterDetailFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCharacterDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentCharacterDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         characterDetailViewModel.getCharacterDetail(args.characterId)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setCharacterDetail(characterDetailView: CharacterDetailView?) {
