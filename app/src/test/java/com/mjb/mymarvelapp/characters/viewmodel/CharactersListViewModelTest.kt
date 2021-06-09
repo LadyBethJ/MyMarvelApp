@@ -34,7 +34,7 @@ class CharactersListViewModelTest {
     private val moreCharactersObserver = mock<Observer<List<CharacterListView>>>()
     private val isErrorObserver = mock<Observer<Throwable>>()
     private var initialOffset = 0
-    private var finalOffset = 20
+    private var finalOffset = 10
 
     @get:Rule
     var coroutinesRule = CoroutineTestRule()
