@@ -35,7 +35,7 @@ class CharacterDetailFragment : BaseFragment() {
         with(characterDetailViewModel) {
             observe(showSpinner, ::showSpinner)
             failure(failure, ::handleFailure)
-            failure(badRequest, ::handleBadRequest)
+            failure(badRequest, ::handleFailure)
             observe(characterDetailResponse, ::setCharacterDetail)
         }
     }
@@ -79,22 +79,6 @@ class CharacterDetailFragment : BaseFragment() {
     }
 
     private fun handleFailure(failure: Throwable?) {
-        showInfoAlertDialog {
-            setTitle(getString(R.string.error_title))
-            setText(failure?.message ?: getString(R.string.common_error))
-            btnAccept {
-                findNavController().navigateUp()
-            }
-        }.show()
-    }
-
-    private fun handleBadRequest(failure: Throwable?) {
-        showInfoAlertDialog {
-            setTitle(getString(R.string.bad_request))
-            setText(failure?.message ?: getString(R.string.common_error))
-            btnAccept {
-                findNavController().navigateUp()
-            }
-        }.show()
+        showAlertDialog(failure)
     }
 }

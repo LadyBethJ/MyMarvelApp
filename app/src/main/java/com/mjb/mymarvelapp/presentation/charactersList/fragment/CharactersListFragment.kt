@@ -4,16 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.mjb.mymarvelapp.R
 import com.mjb.mymarvelapp.databinding.FragmentCharactersListBinding
 import com.mjb.mymarvelapp.infrastructure.di.component.ViewComponent
 import com.mjb.mymarvelapp.presentation.base.BaseFragment
 import com.mjb.mymarvelapp.presentation.charactersList.adapters.CharactersListAdapter
 import com.mjb.mymarvelapp.presentation.charactersList.models.CharacterListView
 import com.mjb.mymarvelapp.presentation.charactersList.viewmodel.CharactersListViewModel
-import com.mjb.mymarvelapp.infrastructure.exception.ErrorHandler
 import com.mjb.mymarvelapp.presentation.utils.extensions.failure
 import com.mjb.mymarvelapp.presentation.utils.extensions.infiniteScroll
 import com.mjb.mymarvelapp.presentation.utils.extensions.observe
+import com.mjb.mymarvelapp.presentation.utils.extensions.showInfoAlertDialog
 import javax.inject.Inject
 
 class CharactersListFragment : BaseFragment() {
@@ -32,7 +34,7 @@ class CharactersListFragment : BaseFragment() {
         with(charactersListViewModel) {
             observe(showSpinner, ::showSpinner)
             failure(failure, ::handleFailure)
-            failure(badRequest, ::handleBadRequest)
+            failure(badRequest, ::handleFailure)
             observe(charactersResponse, ::setListOfCharacters)
             observe(moreCharactersResponse, ::addMoreCharacters)
         }
@@ -78,16 +80,9 @@ class CharactersListFragment : BaseFragment() {
     }
 
     private fun handleFailure(failure: Throwable?) {
-        if (failure?.message == ErrorHandler.NETWORK_ERROR_MESSAGE) {
-            binding.apply {
-                recyclerView.visibility = View.GONE
-            }
-        }
-    }
-
-    private fun handleBadRequest(failure: Throwable?) {
         binding.apply {
             recyclerView.visibility = View.GONE
+            showAlertDialog(failure)
         }
     }
 }

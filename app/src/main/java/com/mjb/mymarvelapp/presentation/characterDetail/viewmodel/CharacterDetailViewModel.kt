@@ -32,7 +32,7 @@ class CharacterDetailViewModel @Inject constructor(
                         is Success<List<CharacterDetail>> -> handleSuccessGetCharacterDetail(result.data)
                         is Error -> handleFailure(result.exception)
                         is ErrorNoConnection -> handleFailure(result.exception)
-                        is BadRequest -> handleBadRequest(result.exception)
+                        is BadRequest -> handleFailure(result.exception)
                     }
                 }
         }

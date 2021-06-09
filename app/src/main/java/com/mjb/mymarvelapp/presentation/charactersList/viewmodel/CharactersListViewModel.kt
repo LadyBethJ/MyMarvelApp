@@ -12,7 +12,6 @@ import com.mjb.mymarvelapp.infrastructure.utils.ErrorNoConnection
 import com.mjb.mymarvelapp.infrastructure.utils.Success
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 class CharactersListViewModel @Inject constructor(val getCharactersListUseCase: GetCharactersListUseCase) :
@@ -58,7 +57,7 @@ class CharactersListViewModel @Inject constructor(val getCharactersListUseCase: 
                         )
                         is Error -> handleFailure(result.exception)
                         is ErrorNoConnection -> handleFailure(result.exception)
-                        is BadRequest -> handleBadRequest(result.exception)
+                        is BadRequest -> handleFailure(result.exception)
                     }
                 }
         }
