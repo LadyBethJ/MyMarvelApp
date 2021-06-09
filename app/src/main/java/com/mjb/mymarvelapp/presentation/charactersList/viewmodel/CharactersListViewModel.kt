@@ -34,9 +34,10 @@ class CharactersListViewModel @Inject constructor(val getCharactersListUseCase: 
                 .onCompletion { handleShowSpinner(false) }
                 .catch { failure -> handleFailure(failure) }.collect { result ->
                     when (result) {
-                        is Success<List<CharacterList>> -> handleSuccessGetCharactersList(
-                            result.data
-                        )
+                        is Success<List<CharacterList>> ->
+                            result.data?.let {
+                                handleSuccessGetCharactersList(it)
+                            }
                         is Error -> handleFailure(result.exception)
                         is ErrorNoConnection -> handleFailure(result.exception)
                         is BadRequest -> handleBadRequest(result.exception)
@@ -52,9 +53,10 @@ class CharactersListViewModel @Inject constructor(val getCharactersListUseCase: 
                 .catch { failure -> handleFailure(failure) }
                 .collect { result ->
                     when (result) {
-                        is Success<List<CharacterList>> -> handleSuccessGetMoreCharacters(
-                            result.data
-                        )
+                        is Success<List<CharacterList>> ->
+                            result.data?.let {
+                                handleSuccessGetMoreCharacters(it)
+                            }
                         is Error -> handleFailure(result.exception)
                         is ErrorNoConnection -> handleFailure(result.exception)
                         is BadRequest -> handleFailure(result.exception)

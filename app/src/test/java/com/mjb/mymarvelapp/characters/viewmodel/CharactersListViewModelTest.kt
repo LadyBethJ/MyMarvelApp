@@ -76,7 +76,7 @@ class CharactersListViewModelTest {
 
             // THEN
             verify(charactersObserver).onChanged(
-                charactersList.data.map { it.toCharacterView() }
+                charactersList.data!!.map { it.toCharacterView() }
             )
         }
 
@@ -105,7 +105,7 @@ class CharactersListViewModelTest {
 
             // THEN
             verify(charactersObserver).onChanged(
-                charactersList.data.map { it.toCharacterView() }
+                charactersList.data!!.map { it.toCharacterView() }
             )
             verify(isErrorObserver).onChanged(expectedError.exception)
         }
@@ -135,7 +135,7 @@ class CharactersListViewModelTest {
 
             // THEN
             verify(moreCharactersObserver).onChanged(
-                charactersList.data.map { it.toCharacterView() }
+                charactersList.data!!.map { it.toCharacterView() }
             )
         }
 }

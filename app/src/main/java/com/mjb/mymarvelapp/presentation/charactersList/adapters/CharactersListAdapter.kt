@@ -62,7 +62,7 @@ class CharactersListAdapter :
                 )
 
                 val action = CharactersListFragmentDirections.actionListToCharacterDetail(
-                    character.id
+                    character.id!!
                 )
 
                 root.setOnClickListener {

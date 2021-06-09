@@ -21,7 +21,7 @@ class CharactersRepositoryImpl @Inject constructor(
             if (networkHandler.isConnected == true) {
                 apiService.getCharactersList(offset).run {
                     if (isSuccessful && body() != null) {
-                        Success(body()!!.apiDataResponse.results.map { it.toCharacterListDomain() })
+                        Success(body()!!.apiDataResponse?.results?.map { it.toCharacterListDomain() })
                     } else {
                         BadRequest(Throwable(ErrorHandler.BAD_REQUEST))
                     }
@@ -40,7 +40,7 @@ class CharactersRepositoryImpl @Inject constructor(
             if (networkHandler.isConnected == true) {
                 apiService.getCharacterDetail(id).run {
                     if (isSuccessful && body() != null) {
-                        Success(body()!!.apiDataResponse.results.map { it.toCharacterDetailDomain() })
+                        Success(body()!!.apiDataResponse?.results?.map { it.toCharacterDetailDomain() })
                     } else {
                         BadRequest(Throwable(ErrorHandler.BAD_REQUEST))
                     }

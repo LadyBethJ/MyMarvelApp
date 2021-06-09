@@ -73,7 +73,7 @@ class CharacterDetailViewModelTest {
 
             // THEN
             verify(characterObserver).onChanged(
-                charactersList.data.map { it.toCharacterDetailView() }[0]
+                charactersList.data?.map { it.toCharacterDetailView() }?.get(0)
             )
         }
 
@@ -103,7 +103,7 @@ class CharacterDetailViewModelTest {
 
             // THEN
             verify(characterObserver).onChanged(
-                charactersList.data.map { it.toCharacterDetailView() }[0]
+                charactersList.data?.map { it.toCharacterDetailView() }?.get(0)
             )
             verify(isErrorObserver).onChanged(expectedError.exception)
         }

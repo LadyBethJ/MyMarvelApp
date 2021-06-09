@@ -69,7 +69,7 @@ class CharacterDetailFragment : BaseFragment() {
                     }.build()
                 )
                 textName.text = characterDetailView.name
-                if (characterDetailView.description.isNotEmpty()) {
+                if (characterDetailView.description?.isNotEmpty()!!) {
                     textDescription.text = characterDetailView.description
                 } else {
                     textDescription.text = requireContext().resources.getText(R.string.no_description)

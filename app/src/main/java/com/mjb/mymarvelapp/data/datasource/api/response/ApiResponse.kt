@@ -6,17 +6,17 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ApiResponse<T>(
     @Json(name = "code")
-    val code: Int,
+    val code: Int?,
     @Json(name = "status")
-    val status: String,
+    val status: String?,
     @Json(name = "copyright")
-    val copyright: String,
+    val copyright: String?,
     @Json(name = "attributionText")
-    val attributionText: String,
+    val attributionText: String?,
     @Json(name = "attributionHTML")
-    val attributionHTML: String,
+    val attributionHTML: String?,
     @Json(name = "data")
-    val apiDataResponse: DataResponse<T>,
+    val apiDataResponse: DataResponse<T>?,
     @Json(name = "etag")
-    val etag: String
+    val etag: String?
 )
