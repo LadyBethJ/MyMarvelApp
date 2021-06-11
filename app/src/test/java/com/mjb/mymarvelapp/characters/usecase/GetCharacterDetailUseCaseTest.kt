@@ -16,31 +16,38 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.`should be instance of`
 import org.amshove.kluent.shouldBeEqualTo
+import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
 
 class GetCharacterDetailUseCaseTest {
 
-    @Test
-    fun `should get all characters on success`() = runBlocking {
-        // GIVEN
-        val repository: CharactersRepositoryImpl
-        val character = mockCharacters(1)
-        val mockResponse = mockApiResponse(character)
-        val characterId = 0
+    private lateinit var getCharacterDetailUseCase: GetCharacterDetailUseCase
+    private var repository = mock<CharactersRepositoryImpl>()
+    private var service = mock<CharactersService>()
+    private var networkHandler = mock<NetworkHandler>()
+    private val characterId = 0
+    private val character = mockCharacters(1)
+    private val mockResponse = mockApiResponse(character)
 
-        // WHEN
-        val service = mock<CharactersService> {
+    @Before
+    fun setup() {
+        service = mock {
             onBlocking { getCharacterDetail(characterId) } doReturn Response.success(mockResponse)
         }
 
-        val networkHandler = mock<NetworkHandler> {
+        networkHandler = mock {
             onBlocking { isConnected } doReturn true
         }
 
         repository = CharactersRepositoryImpl(service, networkHandler)
-        val getCharacterDetailUseCase: GetCharacterDetailUseCase = GetCharacterDetailUseCase(repository)
+        getCharacterDetailUseCase = GetCharacterDetailUseCase(repository)
+    }
 
+    @Test
+    fun `should get all characters on success`() = runBlocking {
+        // GIVEN
+        // WHEN
         val flow: Flow<State<List<CharacterDetail>>> =
             getCharacterDetailUseCase.run(GetCharacterDetailUseCase.Params(characterId))
 
@@ -49,7 +56,9 @@ class GetCharacterDetailUseCaseTest {
             result.`should be instance of`<Success<List<CharacterDetail>>>()
             when (result) {
                 is Success<List<CharacterDetail>> -> {
-                    result.data shouldBeEqualTo character.map { it.toCharacterDetailDomain() }
+                    result.data shouldBeEqualTo character.map {
+                        it.toCharacterDetailDomain()
+                    }
                 }
             }
         }

@@ -28,10 +28,10 @@ class CharacterDetailViewModelTest {
 
     private lateinit var viewModel: CharacterDetailViewModel
     private lateinit var getCharacterDetailUseCase: GetCharacterDetailUseCase
-
     private var repository = mock<CharactersRepositoryImpl>()
     private val characterObserver = mock<Observer<CharacterDetailView>>()
     private val isErrorObserver = mock<Observer<Throwable>>()
+    private val characterId = 0
 
     @get:Rule
     var coroutinesRule = CoroutineTestRule()
@@ -54,7 +54,6 @@ class CharacterDetailViewModelTest {
             // GIVEN
             val charactersList =
                 Success(mockCharacters(1).map { it.toCharacterDetailDomain() })
-            val characterId = 0
 
             val channel = Channel<Success<List<CharacterDetail>>>()
             val flow = channel.consumeAsFlow()
@@ -83,7 +82,6 @@ class CharacterDetailViewModelTest {
             // GIVEN
             val charactersList =
                 Success(mockCharacters(1).map { it.toCharacterDetailDomain() })
-            val characterId = 0
             val expectedError = Error(Throwable())
 
             val channel = Channel<Success<List<CharacterDetail>>>()
