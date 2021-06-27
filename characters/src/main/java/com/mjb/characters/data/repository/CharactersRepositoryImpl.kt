@@ -21,7 +21,7 @@ class CharactersRepositoryImpl (
             if (networkHandler.isConnected == true) {
                 apiService.getCharactersList(offset).run {
                     if (isSuccessful && body() != null) {
-                        Success(body()!!.apiDataResponse?.results?.map { it.toCharacterListDomain() })
+                        Success(body()!!.data?.results?.map { it.toCharacterListDomain() })
                     } else {
                         BadRequest(Throwable(ErrorHandler.BAD_REQUEST))
                     }
@@ -40,7 +40,7 @@ class CharactersRepositoryImpl (
             if (networkHandler.isConnected == true) {
                 apiService.getCharacterDetail(id).run {
                     if (isSuccessful && body() != null) {
-                        Success(body()!!.apiDataResponse?.results?.map { it.toCharacterDetailDomain() })
+                        Success(body()!!.data?.results?.map { it.toCharacterDetailDomain() })
                     } else {
                         BadRequest(Throwable(ErrorHandler.BAD_REQUEST))
                     }
