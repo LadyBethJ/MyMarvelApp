@@ -1,4 +1,4 @@
-package com.mjb.mymarvelapp.infrastructure.di.module
+package com.mjb.mymarvelapp.core.di.module
 
 import android.content.Context
 import dagger.Module

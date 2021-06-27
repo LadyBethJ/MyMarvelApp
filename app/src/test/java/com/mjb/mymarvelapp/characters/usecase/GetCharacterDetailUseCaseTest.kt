@@ -1,15 +1,14 @@
 package com.mjb.mymarvelapp.characters.usecase
 
-import com.mjb.mymarvelapp.data.datasource.api.service.CharactersService
-import com.mjb.mymarvelapp.data.repository.CharactersRepositoryImpl
-import com.mjb.mymarvelapp.domain.model.CharacterDetail
-import com.mjb.mymarvelapp.domain.usecase.GetCharacterDetailUseCase
-import com.mjb.mymarvelapp.infrastructure.network.NetworkHandler
-import com.mjb.mymarvelapp.infrastructure.utils.State
-import com.mjb.mymarvelapp.infrastructure.utils.Success
+import com.mjb.characters.data.service.CharactersService
+import com.mjb.characters.data.repository.CharactersRepositoryImpl
+import com.mjb.characters.data.model.data.CharacterDetail
+import com.mjb.characters.domain.usecase.GetCharacterDetailUseCase
+import com.mjb.mymarvelapp.core.network.NetworkHandler
+import com.mjb.core.utils.State
+import com.mjb.core.utils.Success
 import com.mjb.mymarvelapp.utils.mockApiResponse
 import com.mjb.mymarvelapp.utils.mockCharacters
-import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect

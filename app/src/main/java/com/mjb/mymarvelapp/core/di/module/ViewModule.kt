@@ -1,7 +1,7 @@
-package com.mjb.mymarvelapp.infrastructure.di.module
+package com.mjb.mymarvelapp.core.di.module
 
 import android.app.Activity
-import com.mjb.mymarvelapp.infrastructure.di.scope.ViewScope
+import com.mjb.mymarvelapp.core.di.scope.ViewScope
 import com.mjb.mymarvelapp.presentation.base.BaseActivity
 import dagger.Module
 import dagger.Provides

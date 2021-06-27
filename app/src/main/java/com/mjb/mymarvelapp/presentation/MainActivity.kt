@@ -1,12 +1,11 @@
 package com.mjb.mymarvelapp.presentation
 
 import android.os.Bundle
-import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import com.mjb.mymarvelapp.R
 import com.mjb.mymarvelapp.databinding.ActivityMainBinding
-import com.mjb.mymarvelapp.infrastructure.di.component.ViewComponent
+import com.mjb.mymarvelapp.core.di.component.ViewComponent
 import com.mjb.mymarvelapp.presentation.base.BaseActivity
 
 class MainActivity : BaseActivity() {

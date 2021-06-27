@@ -1,7 +1,7 @@
-package com.mjb.mymarvelapp.infrastructure.di.component
+package com.mjb.mymarvelapp.core.di.component
 
-import com.mjb.mymarvelapp.infrastructure.di.module.ViewModule
-import com.mjb.mymarvelapp.infrastructure.di.scope.ViewScope
+import com.mjb.mymarvelapp.core.di.module.ViewModule
+import com.mjb.mymarvelapp.core.di.scope.ViewScope
 import com.mjb.mymarvelapp.presentation.MainActivity
 import com.mjb.mymarvelapp.presentation.characterDetail.fragment.CharacterDetailFragment
 import com.mjb.mymarvelapp.presentation.charactersList.fragment.CharactersListFragment

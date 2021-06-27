@@ -2,9 +2,9 @@ package com.mjb.mymarvelapp.presentation.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.mjb.mymarvelapp.infrastructure.AndroidApplication
-import com.mjb.mymarvelapp.infrastructure.di.component.ViewComponent
-import com.mjb.mymarvelapp.infrastructure.di.module.ViewModule
+import com.mjb.mymarvelapp.core.AndroidApplication
+import com.mjb.mymarvelapp.core.di.component.ViewComponent
+import com.mjb.mymarvelapp.core.di.module.ViewModule
 
 abstract class BaseActivity : AppCompatActivity() {
 

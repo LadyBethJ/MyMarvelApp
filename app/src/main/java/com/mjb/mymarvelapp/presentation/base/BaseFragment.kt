@@ -5,9 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.mjb.mymarvelapp.R
-import com.mjb.mymarvelapp.infrastructure.AndroidApplication
-import com.mjb.mymarvelapp.infrastructure.di.component.ViewComponent
-import com.mjb.mymarvelapp.infrastructure.di.module.ViewModule
+import com.mjb.mymarvelapp.core.AndroidApplication
+import com.mjb.mymarvelapp.core.di.component.ViewComponent
+import com.mjb.mymarvelapp.core.di.module.ViewModule
 import com.mjb.mymarvelapp.presentation.MainActivity
 import com.mjb.mymarvelapp.presentation.utils.extensions.showInfoAlertDialog
 

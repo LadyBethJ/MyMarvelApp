@@ -1,4 +1,4 @@
-package com.mjb.mymarvelapp.infrastructure.di.scope
+package com.mjb.mymarvelapp.core.di.scope
 
 import javax.inject.Scope
 

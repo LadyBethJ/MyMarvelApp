@@ -1,8 +1,9 @@
 package com.mjb.mymarvelapp.utils
 
+import com.mjb.characters.data.model.api.response.ApiResponse
+import com.mjb.characters.data.model.api.response.DataResponse
 import com.mjb.mymarvelapp.data.datasource.api.response.*
 import com.mjb.mymarvelapp.presentation.utils.extensions.empty
-import com.squareup.moshi.Json
 
 fun <T> mockApiResponse(list: List<T>) = ApiResponse(
     code = 0,
