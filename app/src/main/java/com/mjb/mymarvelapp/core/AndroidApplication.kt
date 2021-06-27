@@ -6,7 +6,7 @@ import com.mjb.characters.core.di.module.characterServiceModule
 import com.mjb.characters.core.di.module.characterUseCasesModule
 import com.mjb.characters.core.di.module.charactersApiModule
 import com.mjb.core.di.module.networkModule
-import com.mjb.mymarvelapp.core.di.module.viewModelModule
+import com.mjb.mymarvelapp.core.di.module.viewModelsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -27,7 +27,7 @@ class AndroidApplication : Application() {
     }
 
     private fun getModules(): List<Module> {
-        val appModules = mutableListOf(viewModelModule)
+        val appModules = mutableListOf(viewModelsModule)
         val charactersModules = mutableListOf(
             characterUseCasesModule,
             characterRepositoryModule,
