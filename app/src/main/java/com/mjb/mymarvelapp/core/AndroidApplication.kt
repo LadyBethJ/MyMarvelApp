@@ -30,17 +30,13 @@ class AndroidApplication : Application() {
         val appModules = mutableListOf(viewModelModule)
         val charactersModules = mutableListOf(
             characterUseCasesModule,
-            //characterDataSourceModule,
-            //characterLocalModule,
             characterRepositoryModule,
             characterServiceModule,
             charactersApiModule
         )
 
-        val coreModules = mutableListOf(
-            networkModule//,
-            //sharedModule,
-        )
+        val coreModules = mutableListOf(networkModule)
+
         val modules = mutableListOf<Module>()
         modules.addAll(appModules)
         modules.addAll(charactersModules)

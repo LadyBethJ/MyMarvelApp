@@ -5,13 +5,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import com.mjb.mymarvelapp.R
 import com.mjb.mymarvelapp.databinding.ActivityMainBinding
-//import com.mjb.mymarvelapp.core.di.component.ViewComponent
 import com.mjb.mymarvelapp.presentation.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 
-    // TODO borrar dagger
-    //override fun initializeInjector(viewComponent: ViewComponent) = viewComponent.inject(this)
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
 

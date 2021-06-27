@@ -2,31 +2,28 @@ package com.mjb.core.di.module
 
 import com.mjb.core.BuildConfig
 import com.mjb.core.network.NetworkHandler
-//import com.mjb.core.network.NetworkHandlerImpl
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 val networkModule = module {
 
     factory { NetworkHandler(get()) }
-    //factory { NetworkHandlerImpl(get()) }
 
     single {
         Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .client(createOkHttpClient())
             .baseUrl(BuildConfig.BASE_URL)
             .build()
+        /*Retrofit.Builder()
+            .addConverterFactory(MoshiConverterFactory.create())
+            .client(createOkHttpClient())
+            .baseUrl(BuildConfig.BASE_URL)
+            .build()*/
     }
-
-    //TODO esto no sé si lo necesito
-    /*single {
-        Retrofit.Builder()
-            .client(createClient())
-            .addConverterFactory(GsonConverterFactory.create())
-    }*/
 }
 
 private fun createOkHttpClient(): OkHttpClient {

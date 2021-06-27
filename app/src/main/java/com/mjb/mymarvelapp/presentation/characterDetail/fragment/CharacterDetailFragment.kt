@@ -10,21 +10,14 @@ import coil.decode.SvgDecoder
 import coil.load
 import com.mjb.mymarvelapp.R
 import com.mjb.mymarvelapp.databinding.FragmentCharacterDetailBinding
-//import com.mjb.mymarvelapp.core.di.component.ViewComponent
 import com.mjb.mymarvelapp.presentation.base.BaseFragment
 import com.mjb.characters.data.model.view.CharacterDetailView
 import com.mjb.core.extensions.failure
 import com.mjb.core.extensions.observe
 import com.mjb.mymarvelapp.presentation.characterDetail.viewmodel.CharacterDetailViewModel
-//import javax.inject.Inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class CharacterDetailFragment : BaseFragment() {
-
-    //TODO borrar dagger
-    //@Inject
-    //lateinit var characterDetailViewModel: CharacterDetailViewModel
-    //override fun initializeInjector(viewComponent: ViewComponent) = viewComponent.inject(this)
 
     private val characterDetailViewModel by viewModel<CharacterDetailViewModel>()
 

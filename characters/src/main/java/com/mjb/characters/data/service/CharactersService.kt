@@ -4,10 +4,7 @@ import com.mjb.characters.data.model.api.response.ApiResponse
 import com.mjb.characters.data.model.api.response.CharacterResponse
 import retrofit2.Response
 import retrofit2.Retrofit
-//import javax.inject.Inject
 
-//TODO borrar dagger
-//class CharactersService @Inject constructor(retrofit: Retrofit) : CharactersApi {
 class CharactersService (retrofit: Retrofit) : CharactersApi {
 
     private val charactersApi by lazy { retrofit.create(CharactersApi::class.java) }

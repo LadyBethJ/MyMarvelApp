@@ -2,21 +2,16 @@ package com.mjb.characters.data.repository
 
 import com.mjb.characters.data.service.CharactersApi
 import com.mjb.characters.domain.repository.CharactersRepository
-//import com.mjb.mymarvelapp.data.datasource.api.service.CharactersApi
 import com.mjb.core.exception.ErrorHandler
 import com.mjb.core.exception.ErrorHandler.NETWORK_ERROR_MESSAGE
 import com.mjb.core.network.NetworkHandler
-//import com.mjb.mymarvelapp.core.network.NetworkHandler
 import com.mjb.core.utils.BadRequest
 import com.mjb.core.utils.Error
 import com.mjb.core.utils.ErrorNoConnection
 import com.mjb.core.utils.Success
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-//import javax.inject.Inject
 
-// TODO borrar dagger
-//class CharactersRepositoryImpl @Inject constructor(
 class CharactersRepositoryImpl (
     private val apiService: CharactersApi,
     private val networkHandler: NetworkHandler
