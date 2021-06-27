@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mjb.mymarvelapp.databinding.FragmentCharactersListBinding
-import com.mjb.mymarvelapp.core.di.component.ViewComponent
+//import com.mjb.mymarvelapp.core.di.component.ViewComponent
 import com.mjb.mymarvelapp.presentation.base.BaseFragment
 import com.mjb.mymarvelapp.presentation.charactersList.adapters.CharactersListAdapter
 import com.mjb.characters.data.model.view.CharacterListView
@@ -13,14 +13,17 @@ import com.mjb.core.extensions.failure
 import com.mjb.core.extensions.infiniteScroll
 import com.mjb.core.extensions.observe
 import com.mjb.mymarvelapp.presentation.charactersList.viewmodel.CharactersListViewModel
-import javax.inject.Inject
+//import javax.inject.Inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class CharactersListFragment : BaseFragment() {
 
-    @Inject
-    lateinit var charactersListViewModel: CharactersListViewModel
+    //TODO borrar dagger
+    //@Inject
+    //lateinit var charactersListViewModel: CharactersListViewModel
+    //override fun initializeInjector(viewComponent: ViewComponent) = viewComponent.inject(this)
 
-    override fun initializeInjector(viewComponent: ViewComponent) = viewComponent.inject(this)
+    private val charactersListViewModel by viewModel<CharactersListViewModel>()
 
     private var _binding: FragmentCharactersListBinding? = null
     private val binding get() = _binding!!

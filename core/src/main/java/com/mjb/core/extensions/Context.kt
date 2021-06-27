@@ -3,9 +3,14 @@ package com.mjb.core.extensions
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.NetworkInfo
 import android.os.Build
 
-val Context.networkInfo: Boolean
+val Context.networkInfo: NetworkInfo?
+    get() =
+        (this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
+
+/*val Context.networkInfo: Boolean
     get() =
         isInternetAvailable(this)
 
@@ -37,3 +42,4 @@ private fun isInternetAvailable(context: Context): Boolean {
     }
     return connection
 }
+*/

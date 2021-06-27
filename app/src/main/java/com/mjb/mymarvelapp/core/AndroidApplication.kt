@@ -1,37 +1,51 @@
 package com.mjb.mymarvelapp.core
 
 import android.app.Application
-import com.mjb.characters.core.di.component.CharactersComponent
-import com.mjb.characters.core.di.provider.CharactersComponentProvider
-import com.mjb.core.di.module.NetworkModule
-import com.mjb.mymarvelapp.core.di.component.ApplicationComponent
-import com.mjb.mymarvelapp.core.di.component.DaggerApplicationComponent
-import com.mjb.mymarvelapp.core.di.module.ApplicationModule
+import com.mjb.characters.core.di.module.characterRepositoryModule
+import com.mjb.characters.core.di.module.characterServiceModule
+import com.mjb.characters.core.di.module.characterUseCasesModule
+import com.mjb.characters.core.di.module.charactersApiModule
+import com.mjb.core.di.module.networkModule
+import com.mjb.mymarvelapp.core.di.module.viewModelModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.module.Module
 
-class AndroidApplication : Application(),
-    CharactersComponentProvider
-{
-
-    private val networkModule: NetworkModule by lazy {
-        // TODO ver cómo quitarle el application o el by lazy
-        NetworkModule(this)
-    }
-
-    val appComponent: ApplicationComponent by lazy {
-        DaggerApplicationComponent.builder()
-            .applicationModule(ApplicationModule(this))
-            .networkModule(networkModule)
-            .build()
-    }
+class AndroidApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent.inject(this)
+
+        startKoin {
+            androidLogger()
+            androidContext(this@AndroidApplication)
+            modules(
+                getModules()
+            )
+        }
     }
 
-    override fun getCharactersComponent(): CharactersComponent {
-        return DaggerCharactersComponent.builder()
-            .networkModule(networkModule)
-            .build()
+    private fun getModules(): List<Module> {
+        val appModules = mutableListOf(viewModelModule)
+        val charactersModules = mutableListOf(
+            characterUseCasesModule,
+            //characterDataSourceModule,
+            //characterLocalModule,
+            characterRepositoryModule,
+            characterServiceModule,
+            charactersApiModule
+        )
+
+        val coreModules = mutableListOf(
+            networkModule//,
+            //sharedModule,
+        )
+        val modules = mutableListOf<Module>()
+        modules.addAll(appModules)
+        modules.addAll(charactersModules)
+        modules.addAll(coreModules)
+
+        return modules
     }
 }

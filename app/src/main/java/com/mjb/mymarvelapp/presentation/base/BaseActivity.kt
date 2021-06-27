@@ -1,12 +1,14 @@
 package com.mjb.mymarvelapp.presentation.base
 
-import android.os.Bundle
+//import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.mjb.mymarvelapp.core.AndroidApplication
-import com.mjb.mymarvelapp.core.di.component.ViewComponent
-import com.mjb.mymarvelapp.core.di.module.ViewModule
+//import com.mjb.mymarvelapp.core.AndroidApplication
+//import com.mjb.mymarvelapp.core.di.component.ViewComponent
+//import com.mjb.mymarvelapp.core.di.module.ViewModule
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity()
+
+/*abstract class BaseActivity : AppCompatActivity() {
 
     abstract fun initializeInjector(viewComponent: ViewComponent)
 
@@ -20,4 +22,4 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initializeInjector(activityComponent)
     }
-}
+}*/

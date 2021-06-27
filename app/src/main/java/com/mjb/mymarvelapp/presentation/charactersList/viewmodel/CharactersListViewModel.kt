@@ -12,10 +12,13 @@ import com.mjb.core.utils.ErrorNoConnection
 import com.mjb.core.utils.Success
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+//import javax.inject.Inject
 
-class CharactersListViewModel @Inject constructor(val getCharactersListUseCase: GetCharactersListUseCase) :
-    BaseViewModel() {
+//TODO borrar dagger
+//class CharactersListViewModel @Inject constructor(val getCharactersListUseCase: GetCharactersListUseCase) :
+class CharactersListViewModel (
+    val getCharactersListUseCase: GetCharactersListUseCase
+) : BaseViewModel() {
 
     companion object {
         private const val MAX_OFFSET = 20

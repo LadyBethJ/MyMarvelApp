@@ -12,9 +12,11 @@ import com.mjb.core.utils.ErrorNoConnection
 import com.mjb.core.utils.Success
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+//import javax.inject.Inject
 
-class CharacterDetailViewModel @Inject constructor(
+//TODO borrar dagger
+//class CharacterDetailViewModel @Inject constructor(
+class CharacterDetailViewModel (
     private val getCharacterDetailUseCase: GetCharacterDetailUseCase
 ) : BaseViewModel() {
 

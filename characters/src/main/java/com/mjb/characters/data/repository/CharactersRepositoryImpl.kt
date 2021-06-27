@@ -13,9 +13,11 @@ import com.mjb.core.utils.ErrorNoConnection
 import com.mjb.core.utils.Success
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import javax.inject.Inject
+//import javax.inject.Inject
 
-class CharactersRepositoryImpl @Inject constructor(
+// TODO borrar dagger
+//class CharactersRepositoryImpl @Inject constructor(
+class CharactersRepositoryImpl (
     private val apiService: CharactersApi,
     private val networkHandler: NetworkHandler
 ) : CharactersRepository {
