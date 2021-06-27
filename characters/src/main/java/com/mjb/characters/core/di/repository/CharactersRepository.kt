@@ -1,4 +1,4 @@
-package com.mjb.characters.core.di.module
+package com.mjb.characters.core.di.repository
 
 import com.mjb.characters.data.repository.CharactersRepositoryImpl
 import com.mjb.characters.domain.repository.CharactersRepository

@@ -1,4 +1,4 @@
-package com.mjb.characters.core.di.module
+package com.mjb.characters.core.di.repository
 
 import com.mjb.characters.domain.usecase.GetCharacterDetailUseCase
 import com.mjb.characters.domain.usecase.GetCharactersListUseCase

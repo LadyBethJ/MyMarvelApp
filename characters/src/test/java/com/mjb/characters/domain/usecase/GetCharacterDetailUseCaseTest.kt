@@ -1,14 +1,14 @@
-package com.mjb.mymarvelapp.characters.usecase
+package com.mjb.characters.domain.usecase
 
 import com.mjb.characters.data.service.CharactersService
 import com.mjb.characters.data.repository.CharactersRepositoryImpl
-import com.mjb.characters.data.model.data.CharacterList
-import com.mjb.characters.domain.usecase.GetCharactersListUseCase
-import com.mjb.mymarvelapp.core.network.NetworkHandler
+import com.mjb.characters.data.model.data.CharacterDetail
+import com.mjb.core.network.NetworkHandler
 import com.mjb.core.utils.State
 import com.mjb.core.utils.Success
-import com.mjb.mymarvelapp.utils.mockApiResponse
-import com.mjb.mymarvelapp.utils.mockCharacters
+import com.mjb.characters.utils.mockApiResponse
+import com.mjb.characters.utils.mockCharacters
+import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -19,20 +19,20 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
 
-class GetCharactersListUseCaseTest {
+class GetCharacterDetailUseCaseTest {
 
-    private lateinit var getCharactersListUseCase: GetCharactersListUseCase
+    private lateinit var getCharacterDetailUseCase: GetCharacterDetailUseCase
     private var repository = mock<CharactersRepositoryImpl>()
     private var service = mock<CharactersService>()
     private var networkHandler = mock<NetworkHandler>()
-    private val offset = 0
-    private val charactersList = mockCharacters(10)
-    private val mockResponse = mockApiResponse(charactersList)
+    private val characterId = 0
+    private val character = mockCharacters(1)
+    private val mockResponse = mockApiResponse(character)
 
     @Before
     fun setup() {
         service = mock {
-            onBlocking { getCharactersList(offset) } doReturn Response.success(mockResponse)
+            onBlocking { getCharacterDetail(characterId) } doReturn Response.success(mockResponse)
         }
 
         networkHandler = mock {
@@ -40,22 +40,24 @@ class GetCharactersListUseCaseTest {
         }
 
         repository = CharactersRepositoryImpl(service, networkHandler)
-        getCharactersListUseCase = GetCharactersListUseCase(repository)
+        getCharacterDetailUseCase = GetCharacterDetailUseCase(repository)
     }
 
     @Test
     fun `should get all characters on success`() = runBlocking {
         // GIVEN
         // WHEN
-        val flow: Flow<State<List<CharacterList>>> =
-            getCharactersListUseCase.run(GetCharactersListUseCase.Params(offset))
+        val flow: Flow<State<List<CharacterDetail>>> =
+            getCharacterDetailUseCase.run(GetCharacterDetailUseCase.Params(characterId))
 
         // THEN
         flow.collect { result ->
-            result.`should be instance of`<Success<List<CharacterList>>>()
+            result.`should be instance of`<Success<List<CharacterDetail>>>()
             when (result) {
-                is Success<List<CharacterList>> -> {
-                    result.data shouldBeEqualTo charactersList.map { it.toCharacterListDomain() }
+                is Success<List<CharacterDetail>> -> {
+                    result.data shouldBeEqualTo character.map {
+                        it.toCharacterDetailDomain()
+                    }
                 }
             }
         }

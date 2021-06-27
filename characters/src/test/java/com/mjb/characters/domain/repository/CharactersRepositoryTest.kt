@@ -1,14 +1,15 @@
-package com.mjb.mymarvelapp.characters.repository
+package com.mjb.characters.domain.repository
 
 import com.mjb.characters.data.service.CharactersService
 import com.mjb.characters.data.repository.CharactersRepositoryImpl
 import com.mjb.characters.data.model.data.CharacterDetail
 import com.mjb.characters.data.model.data.CharacterList
-import com.mjb.mymarvelapp.core.network.NetworkHandler
+import com.mjb.core.network.NetworkHandler
 import com.mjb.core.utils.State
 import com.mjb.core.utils.Success
-import com.mjb.mymarvelapp.utils.mockApiResponse
-import com.mjb.mymarvelapp.utils.mockCharacters
+import com.mjb.characters.utils.mockApiResponse
+import com.mjb.characters.utils.mockCharacters
+import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect

@@ -1,9 +1,7 @@
-package com.mjb.mymarvelapp.utils
+package com.mjb.characters.utils
 
-import com.mjb.characters.data.model.api.response.ApiResponse
-import com.mjb.characters.data.model.api.response.DataResponse
-import com.mjb.mymarvelapp.data.datasource.api.response.*
-import com.mjb.mymarvelapp.presentation.utils.extensions.empty
+import com.mjb.characters.data.model.api.response.*
+import com.mjb.core.extensions.empty
 
 fun <T> mockApiResponse(list: List<T>) = ApiResponse(
     code = 0,
@@ -11,7 +9,7 @@ fun <T> mockApiResponse(list: List<T>) = ApiResponse(
     copyright = String.empty(),
     attributionText = String.empty(),
     attributionHTML = String.empty(),
-    apiDataResponse = mockDataResponse(list),
+    data = mockDataResponse(list),
     etag = String.empty()
 )
 

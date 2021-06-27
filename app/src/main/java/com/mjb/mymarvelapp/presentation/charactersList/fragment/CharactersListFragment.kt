@@ -20,7 +20,7 @@ class CharactersListFragment : BaseFragment() {
 
     private var _binding: FragmentCharactersListBinding? = null
     private val binding get() = _binding!!
-    private val adapter = CharactersListAdapter()
+    private val adapter by lazy{ CharactersListAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

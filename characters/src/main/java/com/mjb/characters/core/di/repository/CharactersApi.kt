@@ -1,4 +1,4 @@
-package com.mjb.characters.core.di.module
+package com.mjb.characters.core.di.repository
 
 import com.mjb.characters.data.service.CharactersApi
 import com.mjb.characters.data.service.CharactersService

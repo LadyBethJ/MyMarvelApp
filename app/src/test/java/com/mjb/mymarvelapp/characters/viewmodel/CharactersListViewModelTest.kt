@@ -10,7 +10,7 @@ import com.mjb.core.utils.Success
 import com.mjb.characters.data.model.view.CharacterListView
 import com.mjb.mymarvelapp.presentation.charactersList.viewmodel.CharactersListViewModel
 import com.mjb.mymarvelapp.utils.CoroutineTestRule
-import com.mjb.mymarvelapp.utils.mockCharacters
+import com.mjb.characters.utils.mockCharacters
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify

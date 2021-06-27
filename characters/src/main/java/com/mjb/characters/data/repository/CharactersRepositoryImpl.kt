@@ -4,6 +4,7 @@ import com.mjb.characters.data.service.CharactersApi
 import com.mjb.characters.domain.repository.CharactersRepository
 import com.mjb.core.exception.ErrorHandler
 import com.mjb.core.exception.ErrorHandler.NETWORK_ERROR_MESSAGE
+import com.mjb.core.extensions.orEmpty
 import com.mjb.core.network.NetworkHandler
 import com.mjb.core.utils.BadRequest
 import com.mjb.core.utils.Error
@@ -18,7 +19,7 @@ class CharactersRepositoryImpl (
 ) : CharactersRepository {
     override fun getCharactersList(offset: Int) = flow {
         emit(
-            if (networkHandler.isConnected == true) {
+            if (networkHandler.isConnected.orEmpty()) {
                 apiService.getCharactersList(offset).run {
                     if (isSuccessful && body() != null) {
                         Success(body()!!.data?.results?.map { it.toCharacterListDomain() })
@@ -37,7 +38,7 @@ class CharactersRepositoryImpl (
 
     override fun getCharacterDetail(id: Int) = flow {
         emit(
-            if (networkHandler.isConnected == true) {
+            if (networkHandler.isConnected.orEmpty()) {
                 apiService.getCharacterDetail(id).run {
                     if (isSuccessful && body() != null) {
                         Success(body()!!.data?.results?.map { it.toCharacterDetailDomain() })

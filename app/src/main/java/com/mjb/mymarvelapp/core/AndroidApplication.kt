@@ -1,10 +1,10 @@
 package com.mjb.mymarvelapp.core
 
 import android.app.Application
-import com.mjb.characters.core.di.module.characterRepositoryModule
-import com.mjb.characters.core.di.module.characterServiceModule
-import com.mjb.characters.core.di.module.characterUseCasesModule
-import com.mjb.characters.core.di.module.charactersApiModule
+import com.mjb.characters.core.di.repository.characterRepositoryModule
+import com.mjb.characters.core.di.repository.characterServiceModule
+import com.mjb.characters.core.di.repository.characterUseCasesModule
+import com.mjb.characters.core.di.repository.charactersApiModule
 import com.mjb.core.di.module.networkModule
 import com.mjb.mymarvelapp.core.di.module.viewModelsModule
 import org.koin.android.ext.koin.androidContext
