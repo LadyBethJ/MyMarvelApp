@@ -2,12 +2,12 @@ package com.mjb.mymarvelapp.characters.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.mjb.mymarvelapp.data.repository.CharactersRepositoryImpl
-import com.mjb.mymarvelapp.domain.model.CharacterList
-import com.mjb.mymarvelapp.domain.usecase.GetCharactersListUseCase
-import com.mjb.mymarvelapp.infrastructure.utils.Error
-import com.mjb.mymarvelapp.infrastructure.utils.Success
-import com.mjb.mymarvelapp.presentation.charactersList.models.CharacterListView
+import com.mjb.characters.data.repository.CharactersRepositoryImpl
+import com.mjb.characters.data.model.data.CharacterList
+import com.mjb.characters.domain.usecase.GetCharactersListUseCase
+import com.mjb.core.utils.Error
+import com.mjb.core.utils.Success
+import com.mjb.characters.data.model.view.CharacterListView
 import com.mjb.mymarvelapp.presentation.charactersList.viewmodel.CharactersListViewModel
 import com.mjb.mymarvelapp.utils.CoroutineTestRule
 import com.mjb.mymarvelapp.utils.mockCharacters

@@ -2,20 +2,20 @@ package com.mjb.mymarvelapp.presentation.charactersList.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mjb.mymarvelapp.domain.model.CharacterList
-import com.mjb.mymarvelapp.domain.usecase.GetCharactersListUseCase
-import com.mjb.mymarvelapp.presentation.base.BaseViewModel
-import com.mjb.mymarvelapp.presentation.charactersList.models.CharacterListView
-import com.mjb.mymarvelapp.infrastructure.utils.BadRequest
-import com.mjb.mymarvelapp.infrastructure.utils.Error
-import com.mjb.mymarvelapp.infrastructure.utils.ErrorNoConnection
-import com.mjb.mymarvelapp.infrastructure.utils.Success
+import com.mjb.characters.data.model.data.CharacterList
+import com.mjb.characters.domain.usecase.GetCharactersListUseCase
+import com.mjb.mymarvelapp.core.base.BaseViewModel
+import com.mjb.characters.data.model.view.CharacterListView
+import com.mjb.core.utils.BadRequest
+import com.mjb.core.utils.Error
+import com.mjb.core.utils.ErrorNoConnection
+import com.mjb.core.utils.Success
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class CharactersListViewModel @Inject constructor(val getCharactersListUseCase: GetCharactersListUseCase) :
-    BaseViewModel() {
+class CharactersListViewModel (
+    val getCharactersListUseCase: GetCharactersListUseCase
+) : BaseViewModel() {
 
     companion object {
         private const val MAX_OFFSET = 20

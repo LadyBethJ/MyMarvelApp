@@ -1,17 +1,14 @@
 package com.mjb.mymarvelapp.presentation
 
 import android.os.Bundle
-import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import com.mjb.mymarvelapp.R
 import com.mjb.mymarvelapp.databinding.ActivityMainBinding
-import com.mjb.mymarvelapp.infrastructure.di.component.ViewComponent
-import com.mjb.mymarvelapp.presentation.base.BaseActivity
+import com.mjb.mymarvelapp.core.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 
-    override fun initializeInjector(viewComponent: ViewComponent) = viewComponent.inject(this)
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
 

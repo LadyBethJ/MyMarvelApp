@@ -14,7 +14,7 @@ import coil.load
 import com.mjb.mymarvelapp.R
 import com.mjb.mymarvelapp.databinding.ListItemCharacterBinding
 import com.mjb.mymarvelapp.presentation.charactersList.fragment.CharactersListFragmentDirections
-import com.mjb.mymarvelapp.presentation.charactersList.models.CharacterListView
+import com.mjb.characters.data.model.view.CharacterListView
 
 class CharactersListAdapter :
     ListAdapter<CharacterListView, CharactersListAdapter.CharactersViewHolder>(DIFF_CALLBACK) {

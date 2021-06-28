@@ -4,30 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.mjb.mymarvelapp.R
 import com.mjb.mymarvelapp.databinding.FragmentCharactersListBinding
-import com.mjb.mymarvelapp.infrastructure.di.component.ViewComponent
-import com.mjb.mymarvelapp.presentation.base.BaseFragment
+import com.mjb.mymarvelapp.core.base.BaseFragment
 import com.mjb.mymarvelapp.presentation.charactersList.adapters.CharactersListAdapter
-import com.mjb.mymarvelapp.presentation.charactersList.models.CharacterListView
+import com.mjb.characters.data.model.view.CharacterListView
+import com.mjb.core.extensions.failure
+import com.mjb.core.extensions.infiniteScroll
+import com.mjb.core.extensions.observe
 import com.mjb.mymarvelapp.presentation.charactersList.viewmodel.CharactersListViewModel
-import com.mjb.mymarvelapp.presentation.utils.extensions.failure
-import com.mjb.mymarvelapp.presentation.utils.extensions.infiniteScroll
-import com.mjb.mymarvelapp.presentation.utils.extensions.observe
-import com.mjb.mymarvelapp.presentation.utils.extensions.showInfoAlertDialog
-import javax.inject.Inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class CharactersListFragment : BaseFragment() {
 
-    @Inject
-    lateinit var charactersListViewModel: CharactersListViewModel
-
-    override fun initializeInjector(viewComponent: ViewComponent) = viewComponent.inject(this)
+    private val charactersListViewModel by viewModel<CharactersListViewModel>()
 
     private var _binding: FragmentCharactersListBinding? = null
     private val binding get() = _binding!!
-    private val adapter = CharactersListAdapter()
+    private val adapter by lazy{ CharactersListAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
