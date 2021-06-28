@@ -1,4 +1,4 @@
-package com.mjb.mymarvelapp.presentation.base
+package com.mjb.mymarvelapp.core.base
 
 import android.view.View
 import androidx.fragment.app.Fragment

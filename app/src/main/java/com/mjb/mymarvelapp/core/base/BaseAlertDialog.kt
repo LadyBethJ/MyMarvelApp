@@ -1,4 +1,4 @@
-package com.mjb.mymarvelapp.presentation.base
+package com.mjb.mymarvelapp.core.base
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

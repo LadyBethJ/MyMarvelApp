@@ -1,4 +1,4 @@
-package com.mjb.mymarvelapp.presentation.base
+package com.mjb.mymarvelapp.core.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

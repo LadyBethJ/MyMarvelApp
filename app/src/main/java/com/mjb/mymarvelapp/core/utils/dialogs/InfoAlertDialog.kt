@@ -1,11 +1,11 @@
-package com.mjb.mymarvelapp.presentation.utils.dialogs
+package com.mjb.mymarvelapp.core.utils.dialogs
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.mjb.mymarvelapp.databinding.InfoAlertDialogBinding
-import com.mjb.mymarvelapp.presentation.base.BaseAlertDialog
+import com.mjb.mymarvelapp.core.base.BaseAlertDialog
 
 class InfoAlertDialog(context: Context) : BaseAlertDialog() {
 

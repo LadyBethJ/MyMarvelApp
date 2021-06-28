@@ -1,6 +1,6 @@
 package com.mjb.characters.data.service
 
-import com.mjb.characters.data.model.api.response.ApiResponse
+import com.mjb.core.data.model.api.response.ApiResponse
 import com.mjb.characters.data.model.api.response.CharacterResponse
 import retrofit2.Response
 import retrofit2.http.GET

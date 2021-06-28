@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mjb.characters.data.model.data.CharacterDetail
 import com.mjb.characters.domain.usecase.GetCharacterDetailUseCase
-import com.mjb.mymarvelapp.presentation.base.BaseViewModel
+import com.mjb.mymarvelapp.core.base.BaseViewModel
 import com.mjb.characters.data.model.view.CharacterDetailView
 import com.mjb.core.utils.BadRequest
 import com.mjb.core.utils.Error

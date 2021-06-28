@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mjb.mymarvelapp.databinding.FragmentCharactersListBinding
-import com.mjb.mymarvelapp.presentation.base.BaseFragment
+import com.mjb.mymarvelapp.core.base.BaseFragment
 import com.mjb.mymarvelapp.presentation.charactersList.adapters.CharactersListAdapter
 import com.mjb.characters.data.model.view.CharacterListView
 import com.mjb.core.extensions.failure

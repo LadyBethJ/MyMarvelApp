@@ -1,4 +1,4 @@
-package com.mjb.characters.data.model.api.response
+package com.mjb.core.data.model.api.response
 
 data class ApiResponse<T>(
     val code: Int?,

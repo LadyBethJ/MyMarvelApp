@@ -10,7 +10,7 @@ import coil.decode.SvgDecoder
 import coil.load
 import com.mjb.mymarvelapp.R
 import com.mjb.mymarvelapp.databinding.FragmentCharacterDetailBinding
-import com.mjb.mymarvelapp.presentation.base.BaseFragment
+import com.mjb.mymarvelapp.core.base.BaseFragment
 import com.mjb.characters.data.model.view.CharacterDetailView
 import com.mjb.core.extensions.failure
 import com.mjb.core.extensions.observe

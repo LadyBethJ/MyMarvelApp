@@ -1,6 +1,8 @@
 package com.mjb.characters.utils
 
 import com.mjb.characters.data.model.api.response.*
+import com.mjb.core.data.model.api.response.ApiResponse
+import com.mjb.core.data.model.api.response.DataResponse
 import com.mjb.core.extensions.empty
 
 fun <T> mockApiResponse(list: List<T>) = ApiResponse(
