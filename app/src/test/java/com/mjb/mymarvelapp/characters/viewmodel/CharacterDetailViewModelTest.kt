@@ -8,7 +8,6 @@ import com.mjb.characters.domain.usecase.GetCharacterDetailUseCase
 import com.mjb.core.utils.Error
 import com.mjb.core.utils.Success
 import com.mjb.characters.data.model.view.CharacterDetailView
-import com.mjb.characters.utils.mockCharacters
 import com.mjb.mymarvelapp.presentation.characterDetail.viewmodel.CharacterDetailViewModel
 import com.mjb.mymarvelapp.utils.CoroutineTestRule
 import com.nhaarman.mockitokotlin2.doReturn
@@ -105,4 +104,5 @@ class CharacterDetailViewModelTest {
             )
             verify(isErrorObserver).onChanged(expectedError.exception)
         }
+
 }
