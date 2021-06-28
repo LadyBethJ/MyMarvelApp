@@ -1,4 +1,4 @@
-package com.mjb.mymarvelapp.characters.viewmodel
+package com.mjb.mymarvelapp.utils
 
 import com.mjb.characters.data.model.api.response.*
 import com.mjb.core.extensions.empty
